@@ -225,13 +225,11 @@ body {
 #output {
     margin-top: 1px;
     margin-bottom: 1px;
-    border: 4px solid #1e90ff;
-    width: 200px;
-    height: 200px;
-    line-height: 200px;
-    background: white;
-    margin: 10px auto;
-    overflow: hidden;
+    border: 4px solid #1E90FF;
+    padding: 5px;
+    width: 180px;
+    height: 180px;
+    margin: 1px auto;
 }
 
 #ymContent {
@@ -250,7 +248,7 @@ body {
 }
 
 #lb_hs>button {
-    background: #837c7a;
+    background: #55b957;
     border: 0px;
     height: 80px;
     width: 120px;

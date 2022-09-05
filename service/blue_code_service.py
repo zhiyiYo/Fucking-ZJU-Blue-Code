@@ -14,7 +14,7 @@ class BlueCodeService(LoginService):
         self.eduction_pattern = re.compile(
             r'<span class="bgr-blue">(.+)</span>')
         self.name_pattern = re.compile(r"<h3>(.{2,4})的通行码</h3>")
-        self.code_pattern = re.compile(r"var text\s?=\s?'(.+)';")
+        self.code_pattern = re.compile(r"text:\s? '(.+)',")
         self.pass_code_url = "https://passcode.zju.edu.cn/pass_code/zx"
 
     @exception_handler('')
