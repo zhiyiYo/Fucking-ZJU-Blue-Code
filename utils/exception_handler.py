@@ -23,7 +23,7 @@ def exception_handler(*default):
             try:
                 return func(*args, **kwargs)
             except BaseException as e:
-                logger.error(f"{e.__class__.__name__}: {e}")
+                logger.error(f"{e.__class__.__name__}: {e}", True)
                 value = deepcopy(default)
                 if len(value) == 0:
                     return None

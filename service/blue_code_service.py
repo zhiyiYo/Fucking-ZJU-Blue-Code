@@ -20,7 +20,5 @@ class BlueCodeService(LoginService):
             return ''
 
         response = self.session.get(self.pass_code_url)
-        with open('test.html','w', encoding='utf-8') as f:
-            f.write(response.text)
         match = self.pattern.search(response.text)
         return match.group(1) if match else ''

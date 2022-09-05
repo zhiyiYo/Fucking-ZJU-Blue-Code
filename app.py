@@ -7,6 +7,7 @@ from starlette.templating import Jinja2Templates
 
 from service.blue_code_service import BlueCodeService
 
+
 app = FastAPI()
 blue_code_service = BlueCodeService()
 

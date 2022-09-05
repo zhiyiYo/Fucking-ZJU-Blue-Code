@@ -31,7 +31,7 @@ class Logger:
         self._logger.info(msg)
 
     def error(self, msg, exc_info=False):
-        logging.getLogger("uvicorn.error").error(msg)
+        logging.getLogger("uvicorn.error").error(msg, exc_info=exc_info)
         self._logger.error(msg, exc_info=exc_info)
 
     def debug(self, msg):

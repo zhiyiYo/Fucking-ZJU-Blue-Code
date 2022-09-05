@@ -1,9 +1,9 @@
 # coding:utf-8
-import base64
 import json
 import re
 
 import requests
+from utils.logger import logger
 
 
 class LoginService:
@@ -21,10 +21,14 @@ class LoginService:
         with open("config/config.json", encoding="utf-8") as f:
             data = json.load(f)
             self.username = data["username"]
-            self.password = base64.b64decode(data["password"]).decode("utf-8")
+            self.password = data["password"]
+            self.nickname = data.get("nickname") or self.username
 
     def login(self):
         """ 登录 """
+        # 清空 Cookie
+        self.session.cookies.clear()
+
         # 获取登录页面
         response = self.session.get(self.login_url)
         execution = re.search(
@@ -45,10 +49,15 @@ class LoginService:
             "authcode": ""
         }
         response = self.session.post(self.login_url, data)
-        return '用户名或密码错误' not in response.text
+
+        if '用户名或密码错误' in response.text:
+            logger.error(self.nickname+"登录失败 😕")
+            return False
+        else:
+            logger.info(self.nickname+"登陆成功 😊")
+            return True
 
     def _rsa_encrypt(self, password, e, m):
         password = int.from_bytes(bytes(password, 'ascii'), 'big')
         result = pow(password, int(e, 16), int(m, 16))
         return hex(result)[2:].rjust(128, '0')
-

@@ -23,11 +23,16 @@
         $("#hs-time").text(`${p(date.getMonth() + 1)}-${p(date.getDate())} 16:15`);
 
         // 蓝码
+        let text = $("#blue-code-text").val();
+        if (!text) {
+            alert("蓝码数据获取失败");
+        }
+
         $('#output').qrcode({
             render: "table",
             width: 180,
             height: 180,
-            text: $("#blue-code-text").val(),
+            text: text,
             render: "canvas",
             foreground: "#1E90FF",
             background: "#FFF",
@@ -50,7 +55,6 @@
     function p(s) {
         return s < 10 ? '0' + s : s;
     }
-
 </script>
 
 
