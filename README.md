@@ -5,7 +5,7 @@
 1. 搭建环境
 
    ```shell
-   pip install requirements.txt
+   pip install -r requirements.txt
    ```
 2. 配置用户名和密码，创建 `config/config.json`，在里面写入：
    ```json

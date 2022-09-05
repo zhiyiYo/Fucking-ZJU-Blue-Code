@@ -65,8 +65,8 @@
 
     <div class="content-box">
         <div class="top-title">
-            <h3>黄政之的通行码</h3>
-            <span class="bgr-blue">研究生</span>
+            <h3>{{info.name}}的通行码</h3>
+            <span class="bgr-blue">{{info.education}}</span>
         </div>
         <strong>
             <div class="time2" id="div_timer"></div>
@@ -197,7 +197,7 @@
         <a href="http://xwfw.zju.edu.cn/mobile/redir.php?catalog_id=371039" target="_blank" class="link-btn">常见问题</a>
         <h3>技术支持：0571-87951669</h3>
     </div>
-    <input type="hidden" id="blue-code-text" name="blue-code-text" value="{{text}}">
+    <input type="hidden" id="blue-code-text" name="blue-code-text" value="{{info.code}}">
 </body>
 
 </html>

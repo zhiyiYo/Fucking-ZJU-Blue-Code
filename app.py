@@ -20,8 +20,8 @@ template = Jinja2Templates("template")
 
 @app.get("/")
 def blue_code(request: Request):
-    text = blue_code_service.get_text()
-    return template.TemplateResponse("index.html", {"request": request, "text": text})
+    info = blue_code_service.get_info()
+    return template.TemplateResponse("index.html", {"request": request, "info": info})
 
 
 if __name__ == '__main__':
