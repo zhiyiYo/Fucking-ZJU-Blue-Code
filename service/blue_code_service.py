@@ -20,7 +20,7 @@ class BlueCodeService(LoginService):
     def __init__(self):
         super().__init__()
         self.eduction_pattern = re.compile(r'<span class="bgr-blue">(.+)</span>')
-        self.name_pattern = re.compile(r"<h3>(.{2,4})的通行码</h3>")
+        self.name_pattern = re.compile(r">(.{2,4})的通行码</h3>")
         self.code_pattern = re.compile(r"text:\s? '(.+)',")
         self.pass_code_url = "https://passcode.zju.edu.cn/pass_code/zx"
 

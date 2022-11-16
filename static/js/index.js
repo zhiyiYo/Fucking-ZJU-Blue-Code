@@ -1,17 +1,23 @@
 $(function () {
     // 健康打卡
     let date = new Date();
-    $("#dk-time").text(`最近打卡时间：${p(date.getMonth() + 1)}-${p(date.getDate())} 00:15`);
+    let today = getToday(date);
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    $("#dk-time").text(`最近打卡时间：${today} 00:15`);
+
+    // 健康码
+    $("#jkm-time").text(`${today} 06:30`)
 
     // 核酸检测
     let day = 24 * 60 * 60000
-    date.setTime(date.getTime() - day);
-    $("#hs-time").text(`${p(date.getMonth() + 1)}-${p(date.getDate())} 16:15`);
+    $("#hs-time").text(`${getToday(new Date(date.getTime() - day))} 23:17`);
 
     // 有效期
-    let begin_time = (new Date(date.getTime() - 11 * day)).toISOString().split('T')[0];
-    let end_time = (new Date(date.getTime() + 12 * day)).toISOString().split('T')[0];
-    $("#blue-code-span").text(`有效期：${begin_time} - ${end_time}`)
+    let beginDate = (new Date(date.getTime() - 11 * day)).toISOString().split('T')[0];
+    let lastDay = (new Date(year, month + 1, 0)).toLocaleDateString('zh').split("/")[2];
+    let endDate = `${year}-${p(month + 1)}-${lastDay}`;
+    $("#blue-code-span").text(`有效期：${beginDate} - ${endDate}`)
 
     // 蓝码
     let text = $("#blue-code-text").val();
@@ -42,6 +48,20 @@ $(function () {
 })
 
 
+/**
+ * 为数字补前导零
+ * @param {number} s 数字，从 0-11
+ * @returns 补零后的数字字符串
+ */
 function p(s) {
-    return s < 10 ? '0' + s : s;
+    return s < 10 ? '0' + s : '' + s;
+}
+
+/**
+ * 获取当前日期
+ * @param {Date} date 日期
+ * @returns 当前日期，不包含年份，格式为 `MM-DD`
+ */
+function getToday(date) {
+    return `${p(date.getMonth() + 1)}-${p(date.getDate())}`;
 }
